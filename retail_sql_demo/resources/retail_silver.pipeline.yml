@@ -1,0 +1,19 @@
+resources:
+  pipelines:
+    retail_sql_pipeline:
+      name: retail_sql_pipeline
+
+      catalog: retail_sql_dev
+      schema: retail_silver
+
+      serverless: true
+
+      libraries:
+        - glob:
+            include: ../src/bronze/**
+
+        - glob:
+            include: ../src/transformations/**
+
+        - glob:
+            include: ../src/silver/**
