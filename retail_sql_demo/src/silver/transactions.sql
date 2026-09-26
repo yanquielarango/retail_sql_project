@@ -1,4 +1,4 @@
-CREATE OR REFRESH MATERIALIZED VIEW retail_sql_dev.retail_silver.transactions (
+CREATE OR REFRESH STREAMING TABLE retail_sql_dev.retail_silver.transactions (
     CONSTRAINT valid_transaction_id
         EXPECT (transaction_id IS NOT NULL),
 
@@ -25,4 +25,4 @@ CREATE OR REFRESH MATERIALIZED VIEW retail_sql_dev.retail_silver.transactions (
 )
 AS
 SELECT *
-FROM transactions_transformed;
+FROM STREAM(transactions_transformed);
